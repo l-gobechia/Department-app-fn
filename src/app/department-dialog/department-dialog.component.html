@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+                <form #form="ngForm" (submit)="submited(form)">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Department Name</mat-label>
+
+                  <input matInput 
+                  type="text" 
+                  name="departmentName"
+                  [(ngModel)]="departmentService.departmentName"
+                  >
+
+                </mat-form-field>
+              
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Department Description</mat-label>
+                  <textarea matInput 
+                  placeholder="Enter Department Description" 
+                  name="departmentDescription"
+                  [(ngModel)]="departmentService.departmentDescription"></textarea>
+                </mat-form-field>
+
+                <button mat-raised-button type="submit">Add Department</button>
+                
+              </form>
+        </div>
+    </div>
+</div>
