@@ -29,13 +29,17 @@ export class DepartmentService {
   }
 
   addDepartment(): Observable<departmentModel>{
+    let newDepartment = new Object({
+      depName: this.departmentName,
+      depDescription: this.departmentDescription,
+    })
     return this.http.post<departmentModel>(`${this.reqUrl}`, 
-    JSON.stringify({depName: this.departmentName, depDescription: this.departmentDescription}), 
+    JSON.stringify(newDepartment), 
     this.httpOptions);
   }
 
-  removeDepartment(departmentID: string){
-    return this.http.delete(this.reqUrl + departmentID);
+  removeDepartment(departmentID: string): Observable<string>{
+    return this.http.delete<string>(this.reqUrl + departmentID);
   } 
 
 };

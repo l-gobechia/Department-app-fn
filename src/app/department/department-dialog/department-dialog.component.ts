@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { DepartmentService } from '../department.service';
+import { DepartmentService } from '../../department.service';
 
 @Component({
   selector: 'app-department-dialog',

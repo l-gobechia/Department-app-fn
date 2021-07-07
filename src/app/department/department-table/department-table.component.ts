@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DepartmentService } from '../department.service';
+import { EmployeeService } from 'src/app/employee.service';
+import { DepartmentService } from '../../department.service';
 
 @Component({
   selector: 'app-department-table',
@@ -8,7 +9,7 @@ import { DepartmentService } from '../department.service';
 })
 export class DepartmentTableComponent implements OnInit {
 
-  constructor(public departmentService: DepartmentService) { }
+  constructor(public departmentService: DepartmentService, public employeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.getDepartments()
@@ -27,4 +28,18 @@ export class DepartmentTableComponent implements OnInit {
     });
   }
 
-}
+  getEmployeesWithDepID(departmentID: string){
+    this.employeeService.departmentID = departmentID;
+    this.employeeService.departmentSelected = true;
+    this.employeeService.getEmployees().subscribe((res: any) => {
+      this.employeeService.employee = res.result;
+      this.employeeService.dataSource = this.employeeService.employee;
+      console.log(123);
+      console.log(this.employeeService.employee);
+
+    }, (err) => {
+      console.log(err.error.errorMesseage);
+    })
+  }
+
+};

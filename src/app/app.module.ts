@@ -14,10 +14,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './header/header.component';
-import { DepartmentTableComponent } from './department-table/department-table.component';
+import { DepartmentTableComponent } from './department/department-table/department-table.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DepartmentDialogComponent } from './department-dialog/department-dialog.component';
+import { DepartmentDialogComponent } from './department/department-dialog/department-dialog.component';
 import { MatInputModule } from '@angular/material/input';
+import { EmployeeTableComponent } from './employee/employee-table/employee-table.component';
+import { EmployeeDialogComponent } from './employee/employee-dialog/employee-dialog.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { MatInputModule } from '@angular/material/input';
     HeaderComponent,
     DepartmentTableComponent,
     DepartmentDialogComponent,
+    EmployeeTableComponent,
+    EmployeeDialogComponent,
     
   ],
   imports: [
