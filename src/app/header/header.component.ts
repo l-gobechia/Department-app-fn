@@ -16,11 +16,6 @@ export class HeaderComponent implements OnInit {
 
   openDialog(){
     const dialogRef = this.dialog.open(DepartmentDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      console.log('executes after dialog close')
-    });
   }
 
 

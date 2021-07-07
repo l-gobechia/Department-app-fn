@@ -9,30 +9,33 @@ import { departmentModel } from './departmentModel';
 export class DepartmentService {
 
   // displays column names in department-table component
-  displayedColumns: string[] = ['Department Name', 'Department Description'];
+  displayedColumns: string[] = ['Department Name', 'Department Description', 'Delete'];
+  // saves all departments from api call
+  departments: departmentModel;
+  // binds departments variable to render table in department-table.component
+  dataSource: any;
   departmentName: string;
   departmentDescription: string;
   reqUrl: string = "http://localhost:3000/department/";
+  httpOptions = {
+    headers: new HttpHeaders({ "Content-Type": "application/json" }),
+  };
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({ "Content-Type": "application/json" }),
-  // };
-
-  departmentData: departmentModel;
-  // dataSource:any;
- 
-  
-
- 
   constructor(private http: HttpClient) { 
-    // this.dataSource = this.departmentData;
-    // console.log('this.dataSource  :>> ', this.dataSource );
-    console.log(' this.departmentData  :>> ',  this.departmentData );
   }
 
   getDepartments(): Observable<departmentModel>{
     return this.http.get<departmentModel>(`${this.reqUrl}`);
   }
 
+  addDepartment(): Observable<departmentModel>{
+    return this.http.post<departmentModel>(`${this.reqUrl}`, 
+    JSON.stringify({depName: this.departmentName, depDescription: this.departmentDescription}), 
+    this.httpOptions);
+  }
 
-}
+  removeDepartment(departmentID: string){
+    return this.http.delete(this.reqUrl + departmentID);
+  } 
+
+};

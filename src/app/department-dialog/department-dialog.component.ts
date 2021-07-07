@@ -17,9 +17,23 @@ export class DepartmentDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submited(form: NgForm){
-    this.dialog.closeAll();
-    console.log(form.value);
+  getDepartments(){
+    this.departmentService.getDepartments().subscribe( (res: any) => {
+      this.departmentService.departments = res.result;
+      this.departmentService.dataSource = this.departmentService.departments;
+    })
   }
-  
+
+  submited(form: NgForm){
+    
+    if(form.valid){
+      this.departmentService.addDepartment().subscribe(res => {
+        this.getDepartments();
+      })
+    } else{
+      alert('Form not valid')
+    }
+    this.dialog.closeAll();
+  }
+
 }

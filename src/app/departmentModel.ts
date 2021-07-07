@@ -1,10 +1,10 @@
 export interface departmentModel { 
     result: [{
-        _id: string,
+        _id?: string,
         departmentName: string,
         departmentDescription: string,
-        createdAt: string,
-        updatedAt: string,
+        createdAt?: string,
+        updatedAt?: string,
     }]
 
 }

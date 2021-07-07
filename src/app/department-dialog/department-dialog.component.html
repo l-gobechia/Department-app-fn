@@ -9,6 +9,7 @@
                   type="text" 
                   name="departmentName"
                   [(ngModel)]="departmentService.departmentName"
+                  required
                   >
 
                 </mat-form-field>
@@ -18,7 +19,8 @@
                   <textarea matInput 
                   placeholder="Enter Department Description" 
                   name="departmentDescription"
-                  [(ngModel)]="departmentService.departmentDescription"></textarea>
+                  [(ngModel)]="departmentService.departmentDescription"
+                  required></textarea>
                 </mat-form-field>
 
                 <button mat-raised-button type="submit">Add Department</button>
