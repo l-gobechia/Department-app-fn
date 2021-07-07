@@ -28,6 +28,7 @@ export class EmployeeService {
 constructor(private http: HttpClient) { }
 
   getEmployees(): Observable<EmployeeModel>{
+    console.log('test');
     // departmentID = this.departmentID;
     return this.http.get<EmployeeModel>(`http://localhost:3000/department/${this.departmentID}/employee`);
   }

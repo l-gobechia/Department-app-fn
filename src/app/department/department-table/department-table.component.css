@@ -5,3 +5,10 @@ table {
 .mat-column-Department-Name{
     cursor: pointer;
 }
+
+.title{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
