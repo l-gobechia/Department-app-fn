@@ -8,3 +8,12 @@ table {
     justify-content: center;
     align-items: center;
 }
+
+.delete-btn{
+    cursor: pointer;
+    text-align: center;
+}
+
+.delete-btn:hover{
+    color: #f44336;
+}

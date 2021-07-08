@@ -2,9 +2,9 @@
   <div class="row">
     <div class="col-md-12">
       <div class="title">
-        <h2>Employees</h2>
+        <h2>{{employeeService.selectedDepartmentName}} Employees</h2>
       </div>
-      <table mat-table [dataSource]="employeeService.dataSource" class="mat-elevation-z8">
+      <table *ngIf="!employeeService.displayEmptyEmployeeList" mat-table [dataSource]="employeeService.dataSource" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
@@ -32,13 +32,18 @@
         </ng-container>
     
         <ng-container matColumnDef="Delete">
-          <th mat-header-cell *matHeaderCellDef>Delete Employee</th>
-          <td mat-cell *matCellDef="let element" (click)="deleteEmployee(element._id)">Delete <i class="fas fa-trash"></i></td>
-        </ng-container>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Delete Employee</th>
+          <td mat-cell *matCellDef="let element" class="delete-btn" (click)="deleteEmployee(element._id)">Delete <i class="fas fa-trash"></i></td>
+        </ng-container>    
+        
+    
     
         <tr mat-header-row *matHeaderRowDef="employeeService.displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: employeeService.displayedColumns;"></tr>
       </table>
+
+      <mat-card style="text-align: center;" *ngIf="employeeService.displayEmptyEmployeeList"> <h6>{{employeeService.selectedDepartmentName}} Department is empty! Create new employee or select another department</h6></mat-card>
+
     </div>
   </div>
 </div>

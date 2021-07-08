@@ -13,8 +13,8 @@
       <ng-container matColumnDef="Department Name" >
         <th mat-header-cell *matHeaderCellDef> Department Name </th>
         <td mat-cell *matCellDef="let element"
-        routerLink="/employee" routerLinkActive="active" 
-        (click)="getEmployeesWithDepID(element._id)"> {{element.departmentName}} </td>
+        routerLink="/department" routerLinkActive="active" 
+        (click)="getEmployeesWithDepID(element._id, element.departmentName)"> {{element.departmentName}} </td>
   
       </ng-container>
   
@@ -25,15 +25,17 @@
       </ng-container>
   
       <ng-container matColumnDef="Delete">
-        <th mat-header-cell *matHeaderCellDef>Delete</th>
-        <td mat-cell *matCellDef="let element">
-          <span style="cursor: pointer;" (click)="removeDepartment(element._id)">Delete <i class="fas fa-trash"></i></span>
+        <th mat-header-cell *matHeaderCellDef style="text-align: center;">Delete</th>
+        <td mat-cell *matCellDef="let element" (click)="removeDepartment(element._id)" class="delete-btn">
+          Delete <i class="fas fa-trash"></i>
         </td>
       </ng-container>
-  
   
       <tr mat-header-row *matHeaderRowDef="departmentService.displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: departmentService.displayedColumns;"></tr>
     </table>
   </div>
 </div>
+
+
+

@@ -40,12 +40,17 @@ export class HeaderComponent implements OnInit {
     this.employeeService.getEmployees().subscribe((res: any) => {
       this.employeeService.employee = res.result;
       this.employeeService.dataSource = this.employeeService.employee;
+      if(this.employeeService.employee.length === 0){
+        this.employeeService.displayEmptyEmployeeList = true;
+      }
     }, (err) => {
       console.log(err.error.errorMesseage);
     })
   };
 
   getDepartments() {
+    this.employeeService.departmentSelected = false;
+    console.log('deoart :>> ');
     this.departmentService.getDepartments().subscribe((res: any) => {
       this.departmentService.departments = res.result;
       this.departmentService.dataSource = this.departmentService.departments;
@@ -53,11 +58,13 @@ export class HeaderComponent implements OnInit {
   }
 
   checkRouter(){
-    if (this.router.url === '/employee'){
-      this.employeeService.departmentSelected = false;
-      this.getEmployees();
-    } else if (this.router.url === '/department' || '/' || '' || 'home'){
+    console.log('this.router.url :>> ', this.router.url);
+
+    if (this.router.url === '/department'){
       this.employeeService.departmentSelected = true;
+      this.getEmployees();
+    } else if (this.router.url === '' || '/' ){
+      this.employeeService.departmentSelected = false;
       this.getDepartments();
     }
   }

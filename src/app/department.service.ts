@@ -14,6 +14,8 @@ export class DepartmentService {
   departments: departmentModel;
   // binds departments variable to render table in department-table.component
   dataSource: any;
+  // error messeage for errorPopup component
+  deleteErrorMesseage: string;
   departmentName: string;
   departmentDescription: string;
   reqUrl: string = "http://localhost:3000/department/";
@@ -29,10 +31,12 @@ export class DepartmentService {
   }
 
   addDepartment(): Observable<departmentModel>{
+ 
     let newDepartment = new Object({
       depName: this.departmentName,
       depDescription: this.departmentDescription,
     })
+    
     return this.http.post<departmentModel>(`${this.reqUrl}`, 
     JSON.stringify(newDepartment), 
     this.httpOptions);

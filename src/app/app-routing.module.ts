@@ -5,11 +5,11 @@ import { EmployeeTableComponent } from './employee/employee-table/employee-table
 
 const routes: Routes = [
   {
-    path: "department",
+    path: "",
     component: DepartmentTableComponent
   },
   {
-    path: "employee",
+    path: "department",
     component: EmployeeTableComponent
   },
   {

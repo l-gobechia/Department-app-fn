@@ -11,3 +11,7 @@
 button{
     display: block;
 }
+
+.errorClass{
+    border-bottom: 2px solid #f44336;
+}

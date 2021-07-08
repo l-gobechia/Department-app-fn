@@ -16,3 +16,6 @@ table {
     width: 100%;
 }
 
+.errorClass{
+    border-bottom: 2px solid #f44336;
+}

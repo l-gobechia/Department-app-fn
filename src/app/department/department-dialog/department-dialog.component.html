@@ -6,24 +6,35 @@
                   <mat-label>Department Name</mat-label>
 
                   <input matInput 
+                  [ngClass]= " { 'errorClass' : sameDepartmentNameErrorMsg } "
                   type="text" 
                   name="departmentName"
+                  placeholder="Enter Department name. Maximum 20 characters."
                   [(ngModel)]="departmentService.departmentName"
                   required
+                  maxlength="20"
                   >
-
                 </mat-form-field>
+
               
+
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Department Description</mat-label>
                   <textarea matInput 
                   placeholder="Enter Department Description" 
                   name="departmentDescription"
+                  maxlength="100"
                   [(ngModel)]="departmentService.departmentDescription"
                   required></textarea>
                 </mat-form-field>
 
-                <button mat-raised-button type="submit">Add Department</button>
+                <h6 *ngIf="sameDepartmentNameErrorMsg" 
+                [ngStyle]="{'color': '#f44336', 'margin-bottom': '10px'}">
+                {{sameDepartmentNameErrorMsg}}</h6>
+
+                <button 
+                mat-raised-button type="submit"
+                [disabled]='!form.form.valid'>Add Department</button>
                 
               </form>
         </div>

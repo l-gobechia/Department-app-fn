@@ -12,3 +12,24 @@ table {
     justify-content: center;
     align-items: center;
 }
+
+
+.delete-btn{
+    cursor: pointer;
+    text-align: center;
+}
+
+.delete-btn:hover{
+    color: #f44336;
+}
+
+.mat-form-field {
+    margin-right: 8px;
+}
+
+
+simple-snack-bar{
+    position: absolute; 
+    top: calc(100% - 110px); 
+    left: calc(50% - 250px);
+}

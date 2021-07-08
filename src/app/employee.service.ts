@@ -20,16 +20,19 @@ export class EmployeeService {
   employeeAge: number;
   employeePosition: string;
   employeeID: string;
+  selectedDepartmentName: string;
+  displayEmptyEmployeeList: boolean = false;
 
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.departmentID = localStorage.getItem('departmentID');
+    this.selectedDepartmentName = localStorage.getItem('departmentName');
+  }  
 
   getEmployees(): Observable<EmployeeModel>{
-    console.log('test');
-    // departmentID = this.departmentID;
     return this.http.get<EmployeeModel>(`http://localhost:3000/department/${this.departmentID}/employee`);
   }
 

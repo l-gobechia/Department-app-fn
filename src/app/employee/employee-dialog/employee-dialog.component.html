@@ -11,17 +11,21 @@
                 name="employeeName"
                 [(ngModel)]="employeeService.employeeName"
                 required
+                placeholder="Maximum 20 characters"
+                maxlength="20"
                 >
             </mat-form-field>
         
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Employee Email</mat-label>
                 <input matInput 
+                [ngClass]= " { 'errorClass' : employeeEmailErrorMsg } "
                 type="text" 
                 name="employeeEmail"
                 [(ngModel)]="employeeService.employeeEmail"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                
+                maxlength="30"
+                placeholder="Maximum 30 characters"
                 >
             </mat-form-field>
         
@@ -31,6 +35,8 @@
                 type="number" 
                 name="employeeAge"
                 [(ngModel)]="employeeService.employeeAge"
+                pattern="^(?:1[01][0-9]|120|1[7-9]|[2-9][0-9])$"
+                placeholder="age must be between 18 and 120"
                 required
                 >
             </mat-form-field>
@@ -42,10 +48,19 @@
                 name="employeePosition"
                 [(ngModel)]="employeeService.employeePosition"
                 required
+                placeholder="Maximum 20 characters"
+                maxlength="20"
                 >
             </mat-form-field>
+
+            <h6 *ngIf="employeeEmailErrorMsg" 
+            [ngStyle]=" {'color': '#f44336', 'margin-bottom': '10px'} ">
+            {{employeeEmailErrorMsg}}</h6>
             
-            <button mat-raised-button type="submit">Add Employee</button>
+            <button
+            mat-raised-button 
+            type="submit"
+            [disabled]='!form.form.valid'>Add Employee</button>
                         
         </form>
       </div>

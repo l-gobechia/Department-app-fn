@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DepartmentService } from 'src/app/department.service';
 import { EmployeeService } from 'src/app/employee.service';
 
 @Component({
@@ -8,9 +9,12 @@ import { EmployeeService } from 'src/app/employee.service';
 })
 export class EmployeeTableComponent implements OnInit {
 
-  constructor(public employeeService: EmployeeService) { }
+  constructor(public employeeService: EmployeeService, public departmentService: DepartmentService) { 
+    
+  }
 
   ngOnInit(): void {
+    this.getEmployees();
   }
 
   getEmployees(){
@@ -18,16 +22,18 @@ export class EmployeeTableComponent implements OnInit {
     this.employeeService.getEmployees().subscribe((res: any) => {
       this.employeeService.employee = res.result;
       this.employeeService.dataSource = this.employeeService.employee;
+      if(this.employeeService.employee.length === 0){
+        this.employeeService.displayEmptyEmployeeList = true;
+      }else{
+        this.employeeService.displayEmptyEmployeeList = false;
+      }
     }, (err) => {
       console.log(err.error.errorMesseage);
     })
-  };
-
+  }
   
 
   deleteEmployee(employeeID){
-    // api call
-    console.log(employeeID);
     this.employeeService.deleteEmployee(employeeID).subscribe((res: any) => {
       this.getEmployees();
     });

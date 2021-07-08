@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" (click)="goToDepartments()" routerLink="/department">Home</a>
+      <a class="navbar-brand" (click)="goToDepartments()" routerLink="/">Home</a>
       <div class="example-button-row">
         <button *ngIf="!employeeService.departmentSelected" mat-raised-button (click)="openDepartmentDialog()">Add Department</button>
         <button *ngIf="employeeService.departmentSelected" mat-raised-button (click)="openEmployeeDialog()">Add Employee</button>

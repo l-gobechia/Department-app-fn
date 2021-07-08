@@ -20,6 +20,8 @@ import { DepartmentDialogComponent } from './department/department-dialog/depart
 import { MatInputModule } from '@angular/material/input';
 import { EmployeeTableComponent } from './employee/employee-table/employee-table.component';
 import { EmployeeDialogComponent } from './employee/employee-dialog/employee-dialog.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { EmployeeDialogComponent } from './employee/employee-dialog/employee-dia
     MatButtonModule,
     MatDialogModule,
     MatInputModule,
+    MatSnackBarModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

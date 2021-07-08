@@ -2,3 +2,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+tr:hover{
+    background: rgba(240, 240, 240, 0.9);
+    border-right:1px solid rgba(120, 120, 120, 0.8) ;
+    border-left: 1px solid rgba(120, 120, 120, 0.8) ;
+}

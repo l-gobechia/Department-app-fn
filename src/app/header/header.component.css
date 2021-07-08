@@ -1,3 +1,10 @@
 nav a{
     cursor: pointer;
 }
+.navbar-brand:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+button:hover{
+    background: rgba(255, 255, 255, 0.842);
+} 
