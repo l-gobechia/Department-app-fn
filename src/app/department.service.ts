@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { departmentModel } from './departmentModel';
-import { environment } from 'src/environments/environment';
+import { env } from 'src/environments';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class DepartmentService {
   deleteErrorMesseage: string;
   departmentName: string;
   departmentDescription: string;
-  reqUrl: string = environment.api;
+  reqUrl: string = process.env == 'production'? env.production.api : env.local.api;
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
