@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { departmentModel } from './departmentModel';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class DepartmentService {
   deleteErrorMesseage: string;
   departmentName: string;
   departmentDescription: string;
-  reqUrl: string = "http://localhost:3000/department/";
+  reqUrl: string = environment.api;
   httpOptions = {
     headers: new HttpHeaders({ "Content-Type": "application/json" }),
   };
@@ -27,7 +28,7 @@ export class DepartmentService {
   }
 
   getDepartments(): Observable<departmentModel>{
-    return this.http.get<departmentModel>(`${this.reqUrl}`);
+    return this.http.get<departmentModel>(`${this.reqUrl}department/`);
   }
 
   addDepartment(): Observable<departmentModel>{
@@ -37,13 +38,13 @@ export class DepartmentService {
       depDescription: this.departmentDescription,
     })
     
-    return this.http.post<departmentModel>(`${this.reqUrl}`, 
+    return this.http.post<departmentModel>(`${this.reqUrl}department/`, 
     JSON.stringify(newDepartment), 
     this.httpOptions);
   }
 
   removeDepartment(departmentID: string): Observable<string>{
-    return this.http.delete<string>(this.reqUrl + departmentID);
+    return this.http.delete<string>(`${this.reqUrl}department/${departmentID}`);
   } 
 
 };

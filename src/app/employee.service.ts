@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EmployeeModel } from './employeeModel';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class EmployeeService {
   // generates UI 
   departmentSelected: boolean = false;
   displayedColumns: string[] = ['Name', 'Email', 'Age', 'Position', 'Delete'];
-  reqUrl: string = 'http://localhost:3000/employee/';
+  reqUrl: string = environment.api;
   departmentID: string;
   employeeName: string;
   employeeEmail: string;
@@ -33,11 +34,11 @@ export class EmployeeService {
   }  
 
   getEmployees(): Observable<EmployeeModel>{
-    return this.http.get<EmployeeModel>(`http://localhost:3000/department/${this.departmentID}/employee`);
+    return this.http.get<EmployeeModel>(`${environment.api}department/${this.departmentID}/employee`);
   }
 
   deleteEmployee(employeeID: string): Observable<string> {
-    return this.http.delete<string>(`${this.reqUrl}${employeeID}`)
+    return this.http.delete<string>(`${this.reqUrl}employee/${employeeID}`)
   }
 
   addEmployee(): Observable<EmployeeModel>{
@@ -48,7 +49,7 @@ export class EmployeeService {
       employeeAge: this.employeeAge,
       employeePosition: this.employeePosition,
     });
-    return this.http.post<EmployeeModel>(`${this.reqUrl}`, JSON.stringify(newEmployee), this.httpOptions);
+    return this.http.post<EmployeeModel>(`${this.reqUrl}employee/`, JSON.stringify(newEmployee), this.httpOptions);
   }
 
 }
