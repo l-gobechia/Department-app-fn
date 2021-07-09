@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   api: 'https://app-departments.herokuapp.com/',
-  port: 4200,
+  PORT: 8080,
 };
